@@ -17,8 +17,7 @@ const Home = () => {
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80">
               I am a React.js and UI/UX developer proficient on developing
-              seamless user interface and web applications using multiple
-              technologies.
+              seamless user interface and web applications.
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <Link
