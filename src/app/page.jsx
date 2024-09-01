@@ -21,7 +21,7 @@ const Home = () => {
             </p>
             <div className="flex flex-col xl:flex-row items-center gap-8">
               <Link
-                href="/assets/resume/Utsav CV.pdf"
+                href="/assets/resume/utsav_cv.pdf"
                 variant="outline"
                 size="lg"
                 className="uppercase flex items-center gap-2 rounded-full border border-accent h-12 px-6 text-accent hover:transition-all hover:bg-accent hover:text-primary"
