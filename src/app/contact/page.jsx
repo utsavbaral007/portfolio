@@ -14,6 +14,10 @@ import {
 } from "@/components/ui/select";
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { FiLoader } from "react-icons/fi";
 
 const Contact = () => {
   const info = [
@@ -34,8 +38,62 @@ const Contact = () => {
     },
   ];
 
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    service: "",
+    textMessage: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleFormValueChange = (e) => {
+    if (typeof e === "object") {
+      const { name, value } = e.target;
+      setFormData({ ...formData, [name]: value });
+    } else {
+      setFormData({ ...formData, service: e });
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.email ||
+      !formData.phoneNumber ||
+      !formData.service ||
+      !formData.textMessage
+    ) {
+      return toast.error(
+        "All form fields must be filled out to proceed. Please check the missing fields and try again."
+      );
+    }
+    try {
+      setLoading(true);
+      fetch("/api/email", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((data) => toast.success(data.message))
+        .finally(() => {
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+            service: "",
+            textMessage: "",
+          });
+          setLoading(false);
+        });
+    } catch (e) {
+      toast.error(e.message);
+      setLoading(false);
+    }
   };
 
   return (
@@ -59,23 +117,51 @@ const Contact = () => {
                 Got a project you would like me to work on?
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstName" placeholder="First Name" />
-                <Input type="lastName" placeholder="Last Name" />
-                <Input type="email" placeholder="Email" />
-                <Input type="phoneNumber" placeholder="Phone Number" />
+                <Input
+                  type="firstName"
+                  placeholder="First Name"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleFormValueChange}
+                />
+                <Input
+                  type="lastName"
+                  placeholder="Last Name"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleFormValueChange}
+                />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleFormValueChange}
+                />
+                <Input
+                  type="phoneNumber"
+                  placeholder="Phone Number"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleFormValueChange}
+                />
               </div>
 
-              <Select>
+              <Select
+                name="service"
+                value={formData.service}
+                onValueChange={handleFormValueChange}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="frontend_development">
+                    <SelectItem value="Frontend Development">
                       Frontend Development
                     </SelectItem>
-                    <SelectItem value="uiux_development">
+                    <SelectItem value="UI/UX Development">
                       UI/UX Development
                     </SelectItem>
                   </SelectGroup>
@@ -84,10 +170,19 @@ const Contact = () => {
               <Textarea
                 className="h-[200px]"
                 placeholder="Type your message here."
+                name="textMessage"
+                value={formData.textMessage}
+                onChange={handleFormValueChange}
               />
-              <Button size="md" className="max-w-fit" type="submit">
-                Send Message
-              </Button>
+              {loading ? (
+                <Button disabled className="max-w-fit">
+                  Sending <FiLoader className="ms-2 h-5 w-5 animate-spin" />
+                </Button>
+              ) : (
+                <Button size="md" className="max-w-fit" type="submit">
+                  Send Message
+                </Button>
+              )}
             </form>
           </div>
           <div className="order-1 xl:order-none flex flex-1 mb-8 xl:mb-0 items-center xl:justify-end">
@@ -108,6 +203,19 @@ const Contact = () => {
             </ul>
           </div>
         </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          type="Success"
+        />
       </div>
     </motion.section>
   );
