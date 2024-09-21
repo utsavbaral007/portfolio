@@ -70,29 +70,28 @@ const Contact = () => {
         "All form fields must be filled out to proceed. Please check the missing fields and try again."
       );
     }
-    try {
-      setLoading(true);
-      fetch("/api/email", {
-        method: "POST",
-        body: JSON.stringify(formData),
+    setLoading(true);
+    fetch("/api/email", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((e) => {
+        console.log(e);
+        setLoading(false);
       })
-        .then((response) => response.json())
-        .then((data) => toast.success(data.message))
-        .finally(() => {
-          setFormData({
-            firstName: "",
-            lastName: "",
-            email: "",
-            phoneNumber: "",
-            service: "",
-            textMessage: "",
-          });
-          setLoading(false);
+      .finally(() => {
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phoneNumber: "",
+          service: "",
+          textMessage: "",
         });
-    } catch (e) {
-      toast.error(e.message);
-      setLoading(false);
-    }
+        setLoading(false);
+      });
   };
 
   return (
