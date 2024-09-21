@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 import hbs from "nodemailer-express-handlebars";
+import path from "path";
 
 export const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -13,11 +14,14 @@ export const mailOptions = {
   to: process.env.NEXT_PUBLIC_USER_EMAIL,
 };
 
-export const hbsOptions = {
-  viewEngine:{
-    defaultLayout: false
+const handlebarOptions = {
+  viewEngine: {
+    extName: ".handlebars",
+    partialsDir: path.resolve(__dirname, "util"),
+    defaultLayout: false,
   },
-  viewPath: 'src/app/util'
-}
+  viewPath: path.resolve(__dirname, "util"),
+  extName: ".handlebars",
+};
 
-transporter.use('compile', hbs(hbsOptions))
+transporter.use("compile", hbs(handlebarOptions));
