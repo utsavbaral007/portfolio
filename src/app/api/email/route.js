@@ -5,7 +5,7 @@ export async function POST(req) {
   const data = await req.json();
 
   try {
-    const info = await new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       transporter.sendMail(
         {
           ...mailOptions,
@@ -20,27 +20,23 @@ export async function POST(req) {
             textMessage: data.textMessage,
           },
         },
-        (error, info) => {
-          if (error) {
-            reject(error);
+        (err, info) => {
+          if (err) {
+            reject(err);
           } else {
             resolve(info);
           }
         }
       );
     });
-
-    // Return a success response
     return NextResponse.json({
       status: 200,
       message: "Email sent successfully!",
-      info,
     });
   } catch (error) {
-    // Handle the error and return an error response
     return NextResponse.json({
-      status: 400,
-      message: "Error sending email",
+      status: 500,
+      message: "Failed to send email.",
       error: error.message,
     });
   }

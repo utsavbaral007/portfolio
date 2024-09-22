@@ -76,9 +76,9 @@ const Contact = () => {
       body: JSON.stringify(formData),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => toast.success(data.message))
       .catch((e) => {
-        console.log(e);
+        toast.error(e.message);
         setLoading(false);
       })
       .finally(() => {

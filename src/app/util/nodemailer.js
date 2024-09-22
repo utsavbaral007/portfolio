@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
 import path from "path";
 
@@ -16,12 +16,9 @@ export const mailOptions = {
 
 const handlebarOptions = {
   viewEngine: {
-    extName: ".handlebars",
-    partialsDir: path.resolve(__dirname, "util"),
-    defaultLayout: false,
+    dfaultLayout: false,
   },
-  viewPath: path.resolve(__dirname, "util"),
-  extName: ".handlebars",
+  viewPath: "src/app/util",
 };
 
 transporter.use("compile", hbs(handlebarOptions));
