@@ -15,8 +15,8 @@ import {
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import { FiLoader } from "react-icons/fi";
+import toast, { Toaster } from "react-hot-toast";
 
 const Contact = () => {
   const info = [
@@ -206,18 +206,21 @@ const Contact = () => {
             </ul>
           </div>
         </div>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-          type="Success"
+        <Toaster
+          toastOptions={{
+            success: {
+              style: {
+                backgroundColor: "rgb(89, 250, 77)",
+                color: "rgb(48, 54, 48)",
+              },
+            },
+            error: {
+              style: {
+                backgroundColor: "rgb(250, 60, 60)",
+                color: "white",
+              },
+            },
+          }}
         />
       </div>
     </motion.section>
