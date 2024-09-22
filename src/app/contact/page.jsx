@@ -76,7 +76,12 @@ const Contact = () => {
       body: JSON.stringify(formData),
     })
       .then((response) => response.json())
-      .then((data) => toast.success(data.message))
+      .then((data) => {
+        console.log(data);
+        data.status == 200
+          ? toast.success(data.message)
+          : toast.error(data.message);
+      })
       .catch((e) => {
         toast.error(e.message);
         setLoading(false);
