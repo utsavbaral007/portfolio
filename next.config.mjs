@@ -5,8 +5,10 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
-  serverRuntimeConfig: {
-    PROJECT_ROOT: __dirname,
+    experimental: {
+    outputFileTracingIncludes: {
+      '/api/email': ['./src/app/template/*'],
+    },
   },
   webpack: (config) => {
     config.resolve.alias["handlebars"] = path.resolve(
