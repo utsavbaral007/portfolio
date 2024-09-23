@@ -1,7 +1,0 @@
-{
-  "functions": {
-    "api/email": {
-      "includeFiles": "src/app/template/mailTemplate.handlebars"
-    }
-  }
-}
