@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
 import path from "path";
-// import { fstat } from "fs";
+import { fstat } from "fs";
 
 export const transporter = nodemailer.createTransport({
   service: "gmail",
