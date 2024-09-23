@@ -77,7 +77,6 @@ const Contact = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         data.status == 200
           ? toast.success(data.message)
           : toast.error(data.message);
