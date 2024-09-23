@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
-// import path from "path";
+import path from "path";
 
 export const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -18,7 +18,7 @@ const handlebarOptions = {
   viewEngine: {
     dfaultLayout: false,
   },
-  viewPath: "src/app/template",
+  viewPath: path.resolve("../app/template"),
 };
 
 transporter.use("compile", hbs(handlebarOptions));
