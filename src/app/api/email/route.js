@@ -56,7 +56,8 @@ export async function POST(req) {
     });
     return NextResponse.json({
       status: 200,
-      message: "Email sent successfully!",
+      message:
+        "Thank you for reaching out! Your message has been successfully submitted.",
     });
   } catch (error) {
     return NextResponse.json({
