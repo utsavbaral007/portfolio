@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
-import path from "path";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
   serverRuntimeConfig: {
-        PROJECT_ROOT: __dirname
-    },
+    PROJECT_ROOT: __dirname,
+  },
   webpack: (config) => {
     config.resolve.alias["handlebars"] = path.resolve(
       "./node_modules/handlebars/lib/index.js"
