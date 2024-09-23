@@ -30,27 +30,20 @@ export async function POST(req) {
       <h1>Dear Utsav,</h1>
       <br />
       <p>
-        {{textMessage}}
+        ${data.textMessage}
       </p>
       <br />
       <div class="footer">
         <p>Best Regards,</p>
-        <p>{{firstName}} {{lastName}}</p>
-        <p>{{email}}</p>
-        <p>{{phoneNumber}}</p>
+        <p>${data.firstName} ${data.lastName}</p>
+        <p>${data.email}</p>
+        <p>${data.phoneNumber}</p>
       </div>
     </div>
   </body>
 </html>
             
             `,
-          context: {
-            firstName: data.firstName,
-            lastName: data.lastName,
-            email: data.email,
-            phoneNumber: data.phoneNumber,
-            textMessage: data.textMessage,
-          },
         },
         (err, info) => {
           if (err) {
