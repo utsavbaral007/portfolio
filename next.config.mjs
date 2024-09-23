@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const nextConfig = {
-  ServerRuntimeConfig: {
+  serverRuntimeConfig: {
     PROJECT_ROOT: __dirname,
   },
   webpack: (config) => {
