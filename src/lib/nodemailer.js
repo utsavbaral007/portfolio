@@ -18,7 +18,7 @@ const handlebarOptions = {
   viewEngine: {
     dfaultLayout: false,
   },
-  viewPath: path.resolve("./src/app/util"),
+  viewPath: path.resolve(process.cwd(), "./src/app/template"),
 };
 
 transporter.use("compile", hbs(handlebarOptions));
