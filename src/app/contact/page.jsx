@@ -17,6 +17,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiLoader } from "react-icons/fi";
 import toast, { Toaster } from "react-hot-toast";
+import Link from "next/link";
 
 const Contact = () => {
   const info = [
@@ -24,16 +25,13 @@ const Contact = () => {
       icon: <FaPhoneAlt />,
       title: "Phone",
       description: "+977-9865544909",
+      type: "tel",
     },
     {
       icon: <FaEnvelope />,
       title: "Email",
       description: "manutsssav@gmail.com",
-    },
-    {
-      icon: <FaMapMarkerAlt />,
-      title: "Address",
-      description: "Chyasundol, Kathmandu, Nepal",
+      type: "mailto",
     },
   ];
 
@@ -197,11 +195,27 @@ const Contact = () => {
                     </div>
                     <div className="flex-1">
                       <p className="text-white/60">{item.title}</p>
-                      <h3 className="text-xl">{item.description}</h3>
+                      <Link
+                        href={`${item.type}:${item.description}`}
+                        className="text-xl"
+                      >
+                        {item.description}
+                      </Link>
                     </div>
                   </li>
                 );
               })}
+              <li className="flex items-center gap-6">
+                <div className="h-[52px] w-[52px] xl:h-[72px] xl:w-[72px] bg-[#27272c] text-accent rounded-md grid place-content-center">
+                  <div>
+                    <FaMapMarkerAlt />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <p className="text-white/60">Address</p>
+                  <h3 className="text-xl">Chyasundol, Kathmandu, Nepal</h3>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
