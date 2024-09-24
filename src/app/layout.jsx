@@ -13,7 +13,6 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Portfolio | Home",
   description: "Homepage of Utsav's portfolio",
 };
 

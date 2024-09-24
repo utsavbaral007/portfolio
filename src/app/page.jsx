@@ -4,6 +4,7 @@ import Social from "@/components/Social";
 import Photo from "@/components/Photo";
 import Link from "next/link";
 import Stats from "@/components/Stats";
+
 const Home = () => {
   return (
     <section className="h-full">
