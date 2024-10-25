@@ -65,12 +65,12 @@ const education = {
     {
       institution: "Tribhuvan University",
       degree: "Masters",
-      duration: "Jun 2021 - Oct 2021",
+      duration: "Oct. 2021 - July 2024",
     },
     {
       institution: "Tribhuvan University",
       degree: "Bachelors",
-      duration: "Jun 2021 - Oct 2021",
+      duration: "Nov. 2014 - Aug. 2018",
     },
   ],
 };
