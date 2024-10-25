@@ -100,10 +100,10 @@ const skills = {
       icon: <SiNextdotjs />,
       name: "Next.js",
     },
-    {
-      icon: <SiTailwindcss />,
-      name: "Tailwind CSS",
-    },
+    // {
+    //   icon: <SiTailwindcss />,
+    //   name: "Tailwind CSS",
+    // },
   ],
 };
 
