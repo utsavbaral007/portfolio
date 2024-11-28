@@ -1,7 +1,10 @@
-'use client'
+"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { Pill } from "@/components/ui/pill";
+import Image from "next/image";
 
 const Blog = () => {
   return (
@@ -13,7 +16,42 @@ const Blog = () => {
       }}
       className="py-2"
     >
-      <div className="container mx-auto">Coming soon...</div>
+      <div className="container mx-auto">
+        <div className="min-h-[70vh]">
+          <div className="h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card>
+              <Image
+                src="https://images.unsplash.com/photo-1731582618594-4c084339d8d2?q=80&w=3328&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                width={600}
+                height={600}
+              />
+              <div className="p-4">
+                <div className="relative flex items-center gap-3">
+                  <Pill>Technology</Pill>
+                </div>
+                <h1 className="text-xl leading-6 font-bold my-3 line-clamp-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing.
+                </h1>
+                <p className="text-sm line-clamp-3 text-white/60">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Temporibus, quidem officiis? Tempora tenetur velit qui dolor,
+                  sequi error voluptatum pariatur esse exercitationem
+                  doloremque.
+                </p>
+                <div className="flex items-center mt-10">
+                  <div className="h-[40px] w-[40px] rounded-full overflow-hidden bg-slate-400"></div>
+                  <div className="flex flex-col ms-3">
+                    <h1 className="font-bold">Utsav Baral</h1>
+                    <p className="leading-3 text-[13px] text-white/60">2h ago</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+            <Card>Hello world</Card>
+            <Card>Hello world</Card>
+          </div>
+        </div>
+      </div>
     </motion.section>
   );
 };

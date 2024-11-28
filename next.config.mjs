@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
-import path from 'path'
+import path from "path";
 
 const nextConfig = {
-  webpack: (config) => {
-    config.resolve.alias["handlebars"] = path.resolve(
-      "./node_modules/handlebars/lib/index.js"
-    );
-    return config;
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 
