@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Card } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
 import Image from "next/image";
 
@@ -25,6 +24,7 @@ const Blog = () => {
                   src="https://images.unsplash.com/photo-1731582618594-4c084339d8d2?q=80&w=3328&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   width={600}
                   height={600}
+                  alt="Blog Image"
                   className="transition duration-500 hover:scale-110"
                 />
               </div>
