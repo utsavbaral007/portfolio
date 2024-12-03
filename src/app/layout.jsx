@@ -1,5 +1,7 @@
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+// import { authOptions } from "@/lib/auth";
+// import { getServerSession } from "next-auth";
 
 //components
 import Header from "@/components/Header";
@@ -17,7 +19,7 @@ export const metadata = {
   description: "Homepage of Utsav's portfolio",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={jetbrainsMono.variable}>

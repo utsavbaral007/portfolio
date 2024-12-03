@@ -5,15 +5,31 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     handleSubmit,
 
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    const signInData = await signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    });
+    if (signInData?.error) {
+      console.log(signInData.error);
+    } else {
+      router.push("/blog");
+    }
+  };
 
   return (
     <motion.section
@@ -32,6 +48,7 @@ const Login = () => {
           >
             <Input
               placeholder="Enter your email"
+              type="text"
               {...register("email", { required: true })}
             />
 
@@ -41,6 +58,7 @@ const Login = () => {
 
             <Input
               placeholder="Enter password"
+              type="password"
               {...register("password", { required: true })}
             />
 
@@ -48,7 +66,9 @@ const Login = () => {
               <span className="text-sm text-red-400">Password is required</span>
             )}
 
-            <Button type="submit">Login</Button>
+            <Button disabled={loading} type="submit">
+              {loading ? "Logging in..." : "Login"}
+            </Button>
           </form>
         </div>
       </div>
