@@ -19,6 +19,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
+    setLoading((prev) => !prev);
     const signInData = await signIn("credentials", {
       email: data.email,
       password: data.password,
@@ -26,7 +27,9 @@ const Login = () => {
     });
     if (signInData?.error) {
       console.log(signInData.error);
+      setLoading((prev) => !prev);
     } else {
+      setLoading((prev) => !prev);
       router.push("/blog");
     }
   };

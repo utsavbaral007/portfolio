@@ -14,7 +14,6 @@ export async function middleware(req) {
   return NextResponse.next();
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: ["/blog/create", "/blog/create/:path*"],
 };
