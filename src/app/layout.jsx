@@ -1,7 +1,5 @@
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-// import { authOptions } from "@/lib/auth";
-// import { getServerSession } from "next-auth";
 
 //components
 import Header from "@/components/Header";

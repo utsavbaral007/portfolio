@@ -1,5 +1,7 @@
 import { prisma } from "@/utils/prisma";
 import { NextResponse } from "next/server";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
 
 export async function GET() {
   try {
@@ -17,13 +19,14 @@ export async function GET() {
 }
 
 export async function POST(req) {
+  const session = await getServerSession(authOptions);
   const body = await req.json();
   await prisma.posts.create({
     data: {
       imgUrl: body.imgUrl,
       title: body.title,
       description: body.description,
-      user: "Utsav Baral",
+      author: session.user.name,
       category: body.category,
     },
   });

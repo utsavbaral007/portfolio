@@ -17,13 +17,19 @@
   }
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+.ql-toolbar.ql-snow {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-color: rgb(255 255 255 / 0.1) !important;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+.ql-container.ql-snow {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-color: rgb(255 255 255 / 0.1) !important;
+  height: 40vh;
+}
+
+.ql-editor {
+  color: rgb(255 255 255 / 0.6);
 }
