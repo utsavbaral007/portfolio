@@ -49,10 +49,10 @@ const CreateBlog = () => {
       },
     })
       .then(() => {
-        console.log("Post created successfully"), creatingPost((prev) => !prev);
+        console.log("Post created successfully"), setCreatingPost((prev) => !prev);
       })
       .catch((e) => {
-        console.log(e), creatingPost((prev) => !prev);
+        console.log(e), setCreatingPost((prev) => !prev);
       });
   };
 
