@@ -11,6 +11,7 @@ export async function GET() {
       data: posts,
     });
   } catch (e) {
+    console.log(e);
     return NextResponse.json({
       status: 400,
       error: e.message,

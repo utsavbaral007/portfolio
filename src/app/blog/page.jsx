@@ -30,6 +30,7 @@ const Blog = () => {
         }
 
         const { data } = await response.json();
+        setBlogData(data);
         setBlogData(data || []);
       } catch (error) {
         console.error("Failed to fetch blog data:", error);
