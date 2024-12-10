@@ -10,7 +10,7 @@ const BlogDetails = ({ params }) => {
   const [loading, setLoading] = useState(false);
 
   const getDetails = useCallback(async () => {
-    setLoading(true); // Set loading to true at the start
+    setLoading(true);
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/blog/details`,
