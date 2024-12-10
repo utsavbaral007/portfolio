@@ -1,10 +1,11 @@
-import { prisma } from "@/utils/prisma";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import connectDB from "./mongodb";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { compare } from "bcrypt";
+import users from "@/app/model/users";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: MongoDBAdapter(connectDB),
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
@@ -25,15 +26,13 @@ export const authOptions = {
         },
       },
       async authorize(credentials) {
-        console.log(credentials.email);
         if (!credentials.email || !credentials.password) {
           return null;
         }
-        const existingUser = await prisma.users.findUnique({
-          where: {
-            email: credentials.email,
-          },
+        const existingUser = await users.findOne({
+          email: credentials.email,
         });
+        console.log(existingUser);
         if (!existingUser) {
           return null;
         }

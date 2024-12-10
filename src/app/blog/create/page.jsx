@@ -54,15 +54,14 @@ const CreateBlog = () => {
     })
       .then(() => {
         toast.success("Post created successfully!");
-        setCreatingPost((prev) => !prev);
         reset();
         setQuillDescription("");
         router.push("/blog");
       })
       .catch(() => {
         toast.error("Something went wrong");
-        setCreatingPost((prev) => !prev);
-      });
+      })
+      .finally(() => setCreatingPost((prev) => !prev));
   };
 
   return (

@@ -1,17 +1,15 @@
-import { prisma } from "@/utils/prisma";
+import posts from "@/app/model/posts";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
   const body = await req.json();
   try {
-    const posts = await prisma.posts.findUnique({
-      where: {
-        slug: body.slug,
-      },
+    const data = await posts.findOne({
+      slug: body.slug,
     });
     return NextResponse.json({
       status: 200,
-      data: [posts],
+      data: [data],
     });
   } catch (e) {
     return NextResponse.json({
