@@ -10,7 +10,7 @@ const BlogDetails = ({ params }) => {
   const [loading, setLoading] = useState(false);
 
   const getDetails = useCallback(async () => {
-    setLoading((prev) => !prev);
+    setLoading(true); // Set loading to true at the start
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/blog/details`,
@@ -22,14 +22,19 @@ const BlogDetails = ({ params }) => {
           },
         }
       );
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+
       const response = await res.json();
-      setBlogData(...blogData, response.data);
-      setLoading((prev) => !prev);
-    } catch (e) {
-      console.log(e);
-      setLoading((prev) => !prev);
+      setBlogData(response.data);
+    } catch (error) {
+      console.error("Failed to fetch blog details:", error);
+    } finally {
+      setLoading(false);
     }
-  }, []);
+  }, [params.slug]);
 
   useEffect(() => {
     getDetails();

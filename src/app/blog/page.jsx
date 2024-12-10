@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Pill } from "@/components/ui/pill";
 import Image from "next/image";
@@ -11,35 +11,35 @@ const Blog = () => {
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getBlogData = useCallback(async () => {
-    try {
-      setLoading((prev) => !prev);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/blog`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      if (data.data.length > 0) {
-        setBlogData(data.data || []);
-        setLoading((prev) => !prev);
-      } else {
-        setBlogData([]);
-        setLoading((prev) => !prev);
-      }
-    } catch (e) {
-      console.log(e);
-      setLoading((prev) => !prev);
-    }
-  }, []);
-
   useEffect(() => {
+    const getBlogData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/blog`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+
+        const { data } = await response.json();
+        setBlogData(data || []);
+      } catch (error) {
+        console.error("Failed to fetch blog data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     getBlogData();
-  }, [getBlogData]);
+  }, []);
 
   return (
     <motion.section
