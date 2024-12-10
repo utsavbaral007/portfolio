@@ -8,7 +8,7 @@ export const dbConnect = async () => {
 
   try {
     await mongoose.connect(process.env.DATABASE_URL, {
-      connectTimeoutMS: 30000,
+      connectTimeoutMS: 9000,
     });
     isConnected = true;
   } catch (error) {

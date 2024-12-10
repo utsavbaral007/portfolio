@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth";
 export async function GET() {
   await dbConnect();
   try {
-    const data = await posts.find();
+    const data = await posts.find().maxTimeMS(8000);
     return NextResponse.json({
       status: 201,
       data: data,
