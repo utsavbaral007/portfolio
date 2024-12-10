@@ -1,7 +1,9 @@
 import posts from "@/app/model/posts";
+import { dbConnect } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
+  await dbConnect();
   const body = await req.json();
   try {
     const data = await posts.findOne({

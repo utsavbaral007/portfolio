@@ -1,11 +1,11 @@
-import connectDB from "./mongodb";
+import { dbConnect } from "./mongodb";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { compare } from "bcrypt";
 import users from "@/app/model/users";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {
-  adapter: MongoDBAdapter(connectDB),
+  adapter: MongoDBAdapter(dbConnect),
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",

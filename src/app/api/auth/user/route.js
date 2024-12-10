@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import users from "@/app/model/users";
-import connectDB from "@/lib/mongodb";
+import { dbConnect } from "@/lib/mongodb";
 
 export async function POST(req) {
-  await connectDB();
+  await dbConnect();
   try {
     const body = await req.json();
     const hashPassword = await hash(body.password, 10);

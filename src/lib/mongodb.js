@@ -1,32 +1,20 @@
 import mongoose from "mongoose";
+import { NextResponse } from "next/server";
 
-const MONGO_URI = process.env.DATABASE_URL;
+let isConnected = false;
 
-if (!MONGO_URI) {
-  throw new Error("Please define the database URL environment variable");
-}
+export const dbConnect = async () => {
+  if (isConnected) return;
 
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
-
-async function connectDB() {
-  if (cached.conn) {
-    return cached.conn;
+  try {
+    await mongoose.connect(process.env.DATABASE_URL, {
+      connectTimeoutMS: 30000,
+    });
+    isConnected = true;
+  } catch (error) {
+    return NextResponse.json({
+      status: 500,
+      message: "Error connecting to the database",
+    });
   }
-
-  if (!cached.promise) {
-    cached.promise = mongoose
-      .connect(MONGO_URI, {
-        connectTimeoutMS: 30000,
-      })
-      .then((mongoose) => mongoose);
-  }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
-}
-
-export default connectDB;
+};

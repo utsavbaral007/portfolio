@@ -1,11 +1,11 @@
-import connectDB from "@/lib/mongodb";
+import { dbConnect } from "@/lib/mongodb";
 import posts from "@/app/model/posts";
 import { NextResponse } from "next/server";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 
 export async function GET() {
-  await connectDB();
+  await dbConnect();
   try {
     const data = await posts.find();
     return NextResponse.json({
