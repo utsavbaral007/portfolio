@@ -2,13 +2,13 @@
   "name": "utsav-portfolio",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "prisma generate && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
-  },
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "migrate": "prisma migrate deploy",
+  "deploy": "npm run migrate && npm run build"
+},
   "prisma": {
     "schema": "./Prisma/schema.prisma"
   },
