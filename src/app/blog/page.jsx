@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Pill } from "@/components/ui/pill";
 import Image from "next/image";
 import moment from "moment";
+import Link from "next/link";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -57,18 +58,22 @@ const Blog = () => {
             <div className="h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogData && blogData.length > 0 ? (
                 blogData?.map((data, _) => (
-                  <div
+                  <Link
                     key={data.id}
                     className="rounded-lg overflow-hidden cursor-pointer border border-white/10"
+                    href={`${location.pathname}/${data.slug}`}
                   >
-                    <div className="overflow-hidden rounded-lg">
+                    <div className="overflow-hidden rounded-lg h-[30vh] md:h-[25vh]">
                       <Image
                         src={data.imgUrl}
                         width={600}
+                        layout="intrinsic"
                         height={600}
                         alt="Blog Image"
                         priority={true}
                         className="transition duration-500 hover:scale-110"
+                        objectFit="cover"
+                        objectPosition="center"
                       />
                     </div>
                     <div className="mt-4 px-4 pb-4">
@@ -78,10 +83,10 @@ const Blog = () => {
                       <h1 className="text-xl leading-6 font-bold mt-3 mb-2 line-clamp-1">
                         {data.title}
                       </h1>
-                      <p
+                      <div
                         dangerouslySetInnerHTML={{ __html: data.description }}
                         className="text-sm line-clamp-3 text-white/60"
-                      ></p>
+                      ></div>
                       <div className="flex items-center mt-10">
                         <div className="h-[40px] w-[40px] rounded-full overflow-hidden bg-slate-400 flex justify-center items-center">
                           UB
@@ -94,7 +99,7 @@ const Blog = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 ))
               ) : (
                 <h1>Sorry! No data present currently!</h1>

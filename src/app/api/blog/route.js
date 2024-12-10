@@ -28,6 +28,11 @@ export async function POST(req) {
       description: body.description,
       author: session.user.name,
       category: body.category,
+      slug: body.title
+        .toLocaleLowerCase()
+        .replace(/[^a-z0-9\s]/g, "")
+        .split(" ")
+        .join("-"),
     },
   });
   return NextResponse.json({

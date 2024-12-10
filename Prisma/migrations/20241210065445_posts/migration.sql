@@ -6,6 +6,7 @@ CREATE TABLE "posts" (
     "description" TEXT NOT NULL,
     "author" TEXT NOT NULL,
     "category" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "posts_pkey" PRIMARY KEY ("id")
@@ -21,6 +22,12 @@ CREATE TABLE "users" (
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "posts_title_key" ON "posts"("title");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "posts_slug_key" ON "posts"("slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");

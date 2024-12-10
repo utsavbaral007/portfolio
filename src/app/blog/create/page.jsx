@@ -16,6 +16,8 @@ import {
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
 
 const CreateBlog = () => {
   const ReactQuill = useMemo(
@@ -27,10 +29,12 @@ const CreateBlog = () => {
   const [quillError, setQuillError] = useState("");
   const [creatingPost, setCreatingPost] = useState(false);
   const [category] = useState("Technology");
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
@@ -49,10 +53,15 @@ const CreateBlog = () => {
       },
     })
       .then(() => {
-        console.log("Post created successfully"), setCreatingPost((prev) => !prev);
+        toast.success("Post created successfully!");
+        setCreatingPost((prev) => !prev);
+        reset();
+        setQuillDescription("");
+        router.push("/blog");
       })
-      .catch((e) => {
-        console.log(e), setCreatingPost((prev) => !prev);
+      .catch(() => {
+        toast.error("Something went wrong");
+        setCreatingPost((prev) => !prev);
       });
   };
 
@@ -82,10 +91,18 @@ const CreateBlog = () => {
           <Input
             className="w-full"
             placeholder="Image URL (only unsplash links valid)"
-            {...register("imgUrl", { required: true })}
+            {...register("imgUrl", {
+              required: "Image URL is required",
+              pattern: {
+                value: /^https:\/\/images\.unsplash\.com\//,
+                message: "URL must start with 'https://images.unsplash.com/'",
+              },
+            })}
           />
           {errors.imgUrl && (
-            <span className="text-sm text-red-400">Image is required</span>
+            <span className="text-sm text-red-400">
+              {errors.imgUrl.message}
+            </span>
           )}
 
           <Select value={category}>
@@ -110,10 +127,26 @@ const CreateBlog = () => {
             <span className="text-sm text-red-400">{quillError}</span>
           )}
           <Button type="submit" className="w-fit">
-            Create Post
+            {creatingPost ? "Submitting..." : "Submit"}
           </Button>
         </form>
       </div>
+      <Toaster
+        toastOptions={{
+          success: {
+            style: {
+              backgroundColor: "rgb(89, 250, 77)",
+              color: "rgb(48, 54, 48)",
+            },
+          },
+          error: {
+            style: {
+              backgroundColor: "rgb(250, 60, 60)",
+              color: "white",
+            },
+          },
+        }}
+      />
     </motion.section>
   );
 };
