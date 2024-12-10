@@ -53,7 +53,7 @@ const BlogDetails = ({ params }) => {
         {loading ? (
           <h1 className="text-center">Loading...</h1>
         ) : blogData && blogData.length > 0 ? (
-          blogData.map((data, _) => (
+          blogData.map((data) => (
             <div key={data.id}>
               <div className="md:h-[50vh] w-full rounded-md overflow-hidden">
                 <Image
