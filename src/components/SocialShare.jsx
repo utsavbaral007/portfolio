@@ -26,12 +26,12 @@ const socials = [
   },
 ];
 
-const SocialShare = ({ containerStyles, iconStyles }) => {
+const SocialShare = ({ containerStyles, iconStyles, title }) => {
   console.log(location.href)
   return (
     <div className={containerStyles}>
       {socials.map((data, index) => (
-        <data.component url={location.href} key={index}>
+        <data.component url={location.href} key={index} title={title}>
           <i className={iconStyles}>{data.icon}</i>
         </data.component>
       ))}

@@ -89,6 +89,7 @@ const BlogDetails = ({ params }) => {
                 <SocialShare
                   containerStyles="flex flex-row sm:flex-col mb-6 sm:mb-0 gap-6 sm:ml-8 border border-white/10 p-3 rounded-lg h-fit order-1 sm:order-2"
                   iconStyles="text-xl md:text-3xl transition-all hover:text-accent"
+                  title={data.title}
                 />
               </div>
               <div className="h-[100vh]"></div>
