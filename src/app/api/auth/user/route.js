@@ -18,13 +18,13 @@ export async function POST(req) {
     return NextResponse.json({
       status: 201,
       user: rest,
-      message: "User created successfully!",
+      message: "User created successfully",
     });
   } catch (error) {
     console.log(error.message);
     return NextResponse.json({
       status: 500,
-      message: "Something went wrong!",
+      message: "Something went wrong",
     });
   }
 }
