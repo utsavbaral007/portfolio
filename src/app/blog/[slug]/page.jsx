@@ -4,6 +4,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import moment from "moment";
+import SocialShare from "@/components/SocialShare";
 
 const BlogDetails = ({ params }) => {
   const [blogData, setBlogData] = useState([]);
@@ -55,7 +56,10 @@ const BlogDetails = ({ params }) => {
         ) : blogData && blogData.length > 0 ? (
           blogData.map((data) => (
             <div key={data.id}>
-              <div className="md:h-[50vh] w-full rounded-md overflow-hidden">
+              <h1 className="text-center font-extrabold text-2xl lg:text-4xl mb-4 sm:mb-8">
+                {data.title}
+              </h1>
+              <div className="md:h-[50vh] w-full rounded-lg overflow-hidden">
                 <Image
                   src={data.imgUrl}
                   width={500}
@@ -77,10 +81,17 @@ const BlogDetails = ({ params }) => {
                   </p>
                 </div>
               </div>
-              <div
-                className="mt-8"
-                dangerouslySetInnerHTML={{ __html: data.description }}
-              ></div>
+              <div className="flex flex-col sm:flex-row justify-between items-start mt-8 relative">
+                <div
+                  className="order-2 sm:order-1"
+                  dangerouslySetInnerHTML={{ __html: data.description }}
+                ></div>
+                <SocialShare
+                  containerStyles="flex flex-row sm:flex-col mb-6 sm:mb-0 gap-6 sm:ml-8 border border-white/10 p-3 rounded-lg h-fit order-1 sm:order-2"
+                  iconStyles="text-xl md:text-3xl transition-all hover:text-accent"
+                />
+              </div>
+              <div className="h-[100vh]"></div>
             </div>
           ))
         ) : (
