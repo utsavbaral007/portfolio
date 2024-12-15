@@ -21,6 +21,9 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-3332233825199846" />
+      </head>
       <body className={jetbrainsMono.variable}>
         <Header />
         <StairTransition />
