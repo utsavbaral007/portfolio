@@ -18,6 +18,7 @@ import "react-quill/dist/quill.snow.css";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import { toolbarModule } from "@/lib/quillToolbar";
 
 const CreateBlog = () => {
   const ReactQuill = useMemo(
@@ -121,6 +122,7 @@ const CreateBlog = () => {
             onChange={(value) => {
               setQuillDescription(value), setQuillError("");
             }}
+            modules={toolbarModule}
           />
           {quillError && (
             <span className="text-sm text-red-400">{quillError}</span>

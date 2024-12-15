@@ -56,7 +56,7 @@ const BlogDetails = ({ params }) => {
         ) : blogData && blogData.length > 0 ? (
           blogData.map((data) => (
             <div key={data.id}>
-              <h1 className="text-center font-extrabold text-2xl lg:text-4xl mb-4 sm:mb-8">
+              <h1 className="text-center font-extrabold text-2xl lg:text-4xl mb-4 sm:mb-8 uppercase tracking-[3px]">
                 {data.title}
               </h1>
               <div className="md:h-[50vh] w-full rounded-lg overflow-hidden">
@@ -83,7 +83,7 @@ const BlogDetails = ({ params }) => {
               </div>
               <div className="flex flex-col sm:flex-row justify-between items-start mt-8 relative">
                 <div
-                  className="order-2 sm:order-1"
+                  className="order-2 sm:order-1 blog-description"
                   dangerouslySetInnerHTML={{ __html: data.description }}
                 ></div>
                 <SocialShare
