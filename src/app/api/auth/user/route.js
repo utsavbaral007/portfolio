@@ -7,6 +7,15 @@ export async function POST(req) {
   await dbConnect();
   try {
     const body = await req.json();
+    const existingUser = await users.findOne({ email: body.email });
+
+    if (existingUser) {
+      return NextResponse.json({
+        status: 400,
+        message: `Sorry, user with email ${body.email} already exists`,
+      });
+    }
+
     const hashPassword = await hash(body.password, 10);
     const newUser = await users.create({
       firstName: body.firstName,
@@ -21,10 +30,9 @@ export async function POST(req) {
       message: "User created successfully",
     });
   } catch (error) {
-    console.log(error.message);
     return NextResponse.json({
       status: 500,
-      message: "Something went wrong",
+      message: error.message,
     });
   }
 }

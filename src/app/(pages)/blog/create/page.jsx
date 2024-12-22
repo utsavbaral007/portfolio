@@ -18,6 +18,7 @@ import "react-quill/dist/quill.snow.css";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
+import { toastOptions } from "@/lib/toastOptions";
 import { toolbarModule } from "@/lib/quillToolbar";
 
 const CreateBlog = () => {
@@ -132,22 +133,7 @@ const CreateBlog = () => {
           </Button>
         </form>
       </div>
-      <Toaster
-        toastOptions={{
-          success: {
-            style: {
-              backgroundColor: "rgb(89, 250, 77)",
-              color: "rgb(48, 54, 48)",
-            },
-          },
-          error: {
-            style: {
-              backgroundColor: "rgb(250, 60, 60)",
-              color: "white",
-            },
-          },
-        }}
-      />
+      <Toaster toastOptions={toastOptions} />
     </motion.section>
   );
 };

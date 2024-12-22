@@ -7,6 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema } from "@/lib/zod";
+import toast, { Toaster } from "react-hot-toast";
+import { toastOptions } from "@/lib/toastOptions";
 
 const Login = () => {
   const router = useRouter();
@@ -15,9 +19,8 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: zodResolver(loginSchema) });
   const onSubmit = async (data) => {
     setLoading((prev) => !prev);
     const signInData = await signIn("credentials", {
@@ -26,11 +29,12 @@ const Login = () => {
       redirect: false,
     });
     if (signInData?.error) {
-      console.log(signInData.error);
+      toast.error("Invalid email or password");
       setLoading((prev) => !prev);
     } else {
-      setLoading((prev) => !prev);
+      toast.success("Logged in successfully");
       router.push("/blog");
+      setLoading((prev) => !prev);
     }
   };
 
@@ -52,21 +56,25 @@ const Login = () => {
             <Input
               placeholder="Enter your email"
               type="text"
-              {...register("email", { required: true })}
+              {...register("email")}
             />
 
-            {errors.email && (
-              <span className="text-sm text-red-400">Email is required</span>
+            {errors.email?.message && (
+              <span className="text-sm text-red-400">
+                {errors.email?.message}
+              </span>
             )}
 
             <Input
               placeholder="Enter password"
               type="password"
-              {...register("password", { required: true })}
+              {...register("password")}
             />
 
-            {errors.password && (
-              <span className="text-sm text-red-400">Password is required</span>
+            {errors.password?.message && (
+              <span className="text-sm text-red-400">
+                {errors.password?.message}
+              </span>
             )}
 
             <Button disabled={loading} type="submit">
@@ -75,6 +83,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <Toaster toastOptions={toastOptions} />
     </motion.section>
   );
 };
