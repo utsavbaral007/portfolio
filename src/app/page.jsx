@@ -20,13 +20,12 @@ const Home = () => {
               I am a React.js and UI/UX developer proficient on developing
               seamless user interface and web applications.
             </p>
-            <div className="flex flex-col items-center xl:flex-row gap-8">
+            <div className="flex flex-col items-center gap-8 xl:flex-row">
               <Link
-                href="/assets/resume/utsav_cv.pdf"
+                href="/assets/resume/utsav_resume.pdf"
                 variant="outline"
                 size="lg"
-                className="flex items-center h-12 px-6 uppercase border rounded-full gap-2 border-accent text-accent hover:transition-all hover:bg-accent hover:text-primary"
-                download
+                className="flex items-center h-12 gap-2 px-6 uppercase border rounded-full border-accent text-accent hover:transition-all hover:bg-accent hover:text-primary"
                 target="_blank"
               >
                 <span>Download CV</span>
