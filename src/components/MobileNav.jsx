@@ -32,11 +32,11 @@ const MobileNav = () => {
   const pathName = usePathname();
   return (
     <Sheet>
-      <SheetTrigger className="flex justify-center items-center">
+      <SheetTrigger className="flex items-center justify-center">
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent className="flex flex-col">
-        <div className="mt-32 mb-40 text-center text-2xl">
+        <div className="mt-32 mb-40 text-2xl text-center">
           <Link href="/">
             <h1 className="text-4xl font-semibold">
               Utsav<span className="text-accent">.</span>
@@ -44,7 +44,7 @@ const MobileNav = () => {
           </Link>
         </div>
 
-        <nav className="flex flex-col justify-center items-center gap-8">
+        <nav className="flex flex-col items-center justify-center gap-8">
           {Links.map((link, index) => {
             return (
               <Link

@@ -23,7 +23,7 @@ const stats = [
 
 const Stats = () => {
   return (
-    <div className="flex flex-wrap justify-between items-center gap-6">
+    <div className="flex flex-wrap items-center justify-between gap-6">
       {stats.map((item, index) => {
         return (
           <div className="flex items-center gap-4" key={index}>
@@ -31,7 +31,7 @@ const Stats = () => {
               end={item.num}
               duration={5}
               delay={2}
-              className="text-4xl xl:text-6xl font-extrabold"
+              className="text-4xl font-extrabold xl:text-6xl"
             />
             <p
               className={`${

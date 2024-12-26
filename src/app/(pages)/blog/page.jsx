@@ -61,7 +61,7 @@ const Blog = () => {
                 blogData?.map((data, _) => (
                   <Link
                     key={data.id}
-                    className="rounded-lg overflow-hidden cursor-pointer border border-white/10"
+                    className="overflow-hidden border rounded-lg cursor-pointer border-white/10"
                     href={`${location.pathname}/${data.slug}`}
                   >
                     <div className="overflow-hidden rounded-lg h-[30vh] md:h-[25vh]">
@@ -77,11 +77,11 @@ const Blog = () => {
                         objectPosition="center"
                       />
                     </div>
-                    <div className="mt-4 px-4 pb-4">
+                    <div className="px-4 pb-4 mt-4">
                       <div className="relative flex items-center gap-3">
                         <Pill>{data.category}</Pill>
                       </div>
-                      <h1 className="text-xl leading-6 font-bold mt-3 mb-2 line-clamp-1">
+                      <h1 className="mt-3 mb-2 text-xl font-bold leading-6 line-clamp-1">
                         {data.title}
                       </h1>
                       <div

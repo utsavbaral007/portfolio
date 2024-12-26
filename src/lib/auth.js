@@ -32,7 +32,7 @@ export const authOptions = {
         const existingUser = await users.findOne({
           email: credentials.email,
         });
-        console.log(existingUser);
+
         if (!existingUser) {
           return null;
         }

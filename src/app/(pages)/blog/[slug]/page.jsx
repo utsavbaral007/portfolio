@@ -81,7 +81,7 @@ const BlogDetails = ({ params }) => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row justify-between items-start mt-8 relative">
+              <div className="relative flex flex-col items-start justify-between mt-8 sm:flex-row">
                 <div
                   className="order-2 sm:order-1 blog-description"
                   dangerouslySetInnerHTML={{ __html: data.description }}

@@ -8,11 +8,11 @@ import Stats from "@/components/Stats";
 const Home = () => {
   return (
     <section className="h-full">
-      <div className="container mx-auto h-full">
-        <div className="flex flex-col xl:flex-row justify-between items-center xl:pt-8 xl:pb-24">
-          <div className="text-center xl:text-left order-2 xl:order-none">
+      <div className="container h-full mx-auto">
+        <div className="flex flex-col items-center justify-between xl:flex-row xl:pt-8 xl:pb-24">
+          <div className="order-2 text-center xl:text-left xl:order-none">
             <span className="text-xl">React/UIUX Developer</span>
-            <h1 className="h1 mb-6 mt-6">
+            <h1 className="mt-6 mb-6 h1">
               Hello I&apos;m <br />
               <span className="text-accent">Utsav Baral</span>
             </h1>
@@ -20,12 +20,12 @@ const Home = () => {
               I am a React.js and UI/UX developer proficient on developing
               seamless user interface and web applications.
             </p>
-            <div className="flex flex-col xl:flex-row items-center gap-8">
+            <div className="flex flex-col items-center xl:flex-row gap-8">
               <Link
                 href="/assets/resume/utsav_cv.pdf"
                 variant="outline"
                 size="lg"
-                className="uppercase flex items-center gap-2 rounded-full border border-accent h-12 px-6 text-accent hover:transition-all hover:bg-accent hover:text-primary"
+                className="flex items-center h-12 px-6 uppercase border rounded-full gap-2 border-accent text-accent hover:transition-all hover:bg-accent hover:text-primary"
                 download
                 target="_blank"
               >
@@ -40,11 +40,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
+          <div className="order-1 mb-8 xl:order-none xl:mb-0">
             <Photo />
           </div>
         </div>
-        <div className="pb-12 pt-4 xl:pb-0 xl:pt-0">
+        <div className="pt-4 pb-12 xl:pb-0 xl:pt-0">
           <Stats />
         </div>
       </div>

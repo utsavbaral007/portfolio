@@ -176,7 +176,7 @@ const Contact = () => {
               />
               {loading ? (
                 <Button disabled className="max-w-fit">
-                  Sending <FiLoader className="ms-2 h-5 w-5 animate-spin" />
+                  Sending <FiLoader className="w-5 h-5 ms-2 animate-spin" />
                 </Button>
               ) : (
                 <Button size="md" className="max-w-fit" type="submit">
@@ -185,7 +185,7 @@ const Contact = () => {
               )}
             </form>
           </div>
-          <div className="order-1 xl:order-none flex flex-1 mb-8 xl:mb-0 items-center xl:justify-end">
+          <div className="flex items-center flex-1 order-1 mb-8 xl:order-none xl:mb-0 xl:justify-end">
             <ul className="flex flex-col gap-10">
               {info.map((item, index) => {
                 return (

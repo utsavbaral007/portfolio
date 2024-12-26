@@ -76,10 +76,10 @@ const CreateBlog = () => {
       className="py-2"
     >
       <div className="container mx-auto">
-        <h1 className="text-2xl uppercase mb-6">Create a new blog</h1>
+        <h1 className="mb-6 text-2xl uppercase">Create a new blog</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full flex flex-col gap-4"
+          className="flex flex-col w-full gap-4"
         >
           <Input
             className="w-full"
