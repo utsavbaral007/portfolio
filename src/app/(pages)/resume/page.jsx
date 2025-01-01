@@ -24,7 +24,7 @@ const about = {
     { fieldName: "Experience", fieldValue: "2+ Years" },
     { fieldName: "GitHub", fieldValue: "utsavbaral007" },
     { fieldName: "Nationality", fieldValue: "Nepali" },
-    { fieldName: "E-mail", fieldValue: "manutsssav@gmail.com" },
+    { fieldName: "E-mail", fieldValue: "utsavbaral007@gmail.com" },
     { fieldName: "Languages", fieldValue: "Nepali, English, Hindi" },
   ],
 };
@@ -204,7 +204,7 @@ const Resume = () => {
                       <TooltipProvider key={index} delayDuration={100}>
                         <Tooltip>
                           <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
-                            <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                            <div className="text-6xl transition-all duration-300 group-hover:text-accent">
                               {item.icon}
                             </div>
                           </TooltipTrigger>
