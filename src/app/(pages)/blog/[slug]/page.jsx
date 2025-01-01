@@ -92,7 +92,6 @@ const BlogDetails = ({ params }) => {
                   title={data.title}
                 />
               </div>
-              <div className="h-[100vh]"></div>
             </div>
           ))
         ) : (
