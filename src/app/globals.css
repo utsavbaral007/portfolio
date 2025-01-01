@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-primary bg-primary text-white;
+    @apply text-white font-primary bg-primary;
   }
   .h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
@@ -62,10 +62,13 @@
   font-weight: 200;
 }
 
-.blog-description pre{
+.blog-description pre {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 1rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: justify;
 }
 
 @media only screen and (max-width: 960px) {
