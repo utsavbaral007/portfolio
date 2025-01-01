@@ -32,9 +32,12 @@ const Signup = () => {
         },
       });
       const response = await res.json();
-      if (res.status === 201) {
+      if (response.status === 201) {
         toast.success(response.message);
-        router.push("/login");
+        setLoading((prev) => !prev);
+        setTimeout(() => {
+          router.push("/login");
+        }, 2000);
       } else {
         toast.error(response.message);
         setLoading((prev) => !prev);
