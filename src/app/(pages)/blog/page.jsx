@@ -6,9 +6,8 @@ import { Pill } from "@/components/ui/pill";
 import Image from "next/image";
 import moment from "moment";
 import Link from "next/link";
-import { nameShortner } from "@/lib/nameShortner";
 
-const Blog = ({ user }) => {
+const Blog = () => {
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(false);
 
