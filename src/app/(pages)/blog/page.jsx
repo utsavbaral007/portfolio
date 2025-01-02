@@ -6,6 +6,7 @@ import { Pill } from "@/components/ui/pill";
 import Image from "next/image";
 import moment from "moment";
 import Link from "next/link";
+import { nameShortner } from "@/lib/nameShortner";
 
 const Blog = () => {
   const [blogData, setBlogData] = useState([]);
@@ -90,7 +91,7 @@ const Blog = () => {
                       ></div>
                       <div className="flex items-center mt-10">
                         <div className="h-[40px] w-[40px] rounded-full overflow-hidden bg-slate-400 flex justify-center items-center">
-                          UB
+                          {nameShortner(data.author)}
                         </div>
                         <div className="flex flex-col ms-3">
                           <h1 className="font-bold">{data.author}</h1>

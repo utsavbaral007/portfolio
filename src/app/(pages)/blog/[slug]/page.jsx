@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import moment from "moment";
 import SocialShare from "@/components/SocialShare";
+import { nameShortner } from "@/lib/nameShortner";
 
 const BlogDetails = ({ params }) => {
   const [blogData, setBlogData] = useState([]);
@@ -72,7 +73,7 @@ const BlogDetails = ({ params }) => {
               </div>
               <div className="flex items-center mt-10">
                 <div className="h-[40px] w-[40px] md:h-[60px] md:w-[60px] rounded-full overflow-hidden bg-slate-400 flex justify-center items-center">
-                  UB
+                  {nameShortner(data.author)}
                 </div>
                 <div className="flex flex-col ms-3">
                   <h1 className="font-bold md:text-lg">{data.author}</h1>
