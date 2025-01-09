@@ -46,7 +46,7 @@ const experience = {
     },
     {
       company: "Learngaroo",
-      position: "Web Developer Intern",
+      position: "Web Developer",
       duration: "June 2020 - Sept. 2020",
     },
     {
@@ -228,7 +228,7 @@ const Resume = () => {
                 <p className="text-white/60 max-w-[600px] mx-auto xl:mx-0">
                   {about.description}
                 </p>
-                <ul className="grid grid-col-1 xl:grid-cols-2 gap-y-6 max-w-[700px] mx-auto xl:mx-0">
+                <ul className="grid grid-col-1 xl:grid-cols-2 gap-y-6 max-w-[750px] mx-auto xl:mx-0">
                   {about.info?.map((item, index) => (
                     <li
                       key={index}
