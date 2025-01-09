@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import {
   FacebookShareButton,
