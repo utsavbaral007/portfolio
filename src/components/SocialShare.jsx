@@ -1,9 +1,8 @@
-import { FaFacebook, FaTwitter, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import {
   FacebookShareButton,
   TwitterShareButton,
   LinkedinShareButton,
-  MailruShareButton,
 } from "react-share";
 
 const socials = [
@@ -19,14 +18,10 @@ const socials = [
     icon: <FaLinkedin />,
     component: LinkedinShareButton,
   },
-  {
-    icon: <FaEnvelope />,
-    component: MailruShareButton,
-  },
 ];
 
 const SocialShare = ({ containerStyles, iconStyles, title }) => {
-  console.log(location.href)
+  console.log(location.href);
   return (
     <div className={containerStyles}>
       {socials.map((data, index) => (
