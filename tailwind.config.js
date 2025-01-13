@@ -14,7 +14,7 @@ module.exports = {
       padding: "1rem",
     },
     screens: {
-      xs: "481px",
+      xs: "480px",
       sm: "640px",
       md: "768px",
       lg: "960px",
