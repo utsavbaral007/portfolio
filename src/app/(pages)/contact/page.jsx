@@ -30,7 +30,7 @@ const Contact = () => {
     {
       icon: <FaEnvelope />,
       title: "Email",
-      description: "manutsssav@gmail.com",
+      description: "utsavbaral007@gmail.com",
       type: "mailto",
     },
   ];
@@ -106,7 +106,7 @@ const Contact = () => {
       className="py-2"
     >
       <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row gap-8">
+        <div className="flex flex-col gap-8 xl:flex-row">
           <div className="xl:w-[54%] order-2 xl:order-none">
             <form
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
@@ -116,7 +116,7 @@ const Contact = () => {
               <p className="text-white/60">
                 Got a project you would like me to work on?
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <Input
                   type="firstName"
                   placeholder="First Name"
@@ -158,8 +158,8 @@ const Contact = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="Frontend Development">
-                      Frontend Development
+                    <SelectItem value="React.js/Next.js Development">
+                      React.js/Next.js Development
                     </SelectItem>
                     <SelectItem value="UI/UX Development">
                       UI/UX Development
