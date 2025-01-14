@@ -60,6 +60,7 @@ export async function POST(req) {
         "Thank you for reaching out! Your message has been successfully submitted.",
     });
   } catch (error) {
+    console.log(error)
     return NextResponse.json({
       status: 500,
       message: "Failed to send email!",
